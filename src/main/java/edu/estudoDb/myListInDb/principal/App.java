@@ -29,21 +29,26 @@ public class App {
 
     public void init() {
 
+        // Create and save Categoria
         Categoria categoria = new Categoria();
         categoria.setNome("Categoria 1");
         repositoryCategoria.save(categoria);
 
+        //create and save Pedido
         Pedido pedido = new Pedido();
         repositoryPedido.save(pedido);
 
+        //Create and save Produto
         Produto produto = new Produto();
         produto.setNome("Produto 1");
         repositoryProduto.save(produto);
 
+        //Created lists with data of DB
         categorias = repositoryCategoria.findAll();
         pedidos = repositoryPedido.findAll();
         produtos = repositoryProduto.findAll();
 
+        //Read lists
         categorias.forEach(System.out::println);
         pedidos.forEach(System.out::println);
         produtos.forEach(System.out::println);

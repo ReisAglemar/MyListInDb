@@ -17,6 +17,7 @@ public class MyListInDbApplication implements CommandLineRunner {
     @Autowired
     private RepositoryCategoria repositoryCategoria;
 
+    //injeção de dependência
     @Autowired
     private RepositoryPedido repositoryPedido;
 

@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration;
 @SpringBootApplication
 public class MyListInDbApplication implements CommandLineRunner {
 
+    //injeção de dependência
     @Autowired
     private RepositoryCategoria repositoryCategoria;
 

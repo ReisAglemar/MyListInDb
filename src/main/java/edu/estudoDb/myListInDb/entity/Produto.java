@@ -27,12 +27,18 @@ public class Produto implements ItoString {
     @ManyToOne
     private Fornecedor fornecedor;
 
+    @ManyToOne
+    private Pedido pedido;
+
     public Produto() {
     }
 
-    public Produto(String nome, double preco) {
+    public Produto(String nome, double preco, Categoria categoria, Fornecedor fornecedor, Pedido pedido) {
         this.nome = nome;
         this.preco = preco;
+        this.categoria = categoria;
+        this.fornecedor = fornecedor;
+        this.pedido = pedido;
     }
 
     @Override

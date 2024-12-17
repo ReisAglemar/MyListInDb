@@ -1,14 +1,13 @@
 package edu.estudoDb.myListInDb.entity;
 
 import edu.estudoDb.myListInDb.patterns.ItoString;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -21,6 +20,9 @@ public class Pedido implements ItoString {
     private Long id;
 
     private LocalDate data;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Produto> produtos = new ArrayList<>();
 
     public Pedido() {
         this.data = LocalDate.now();

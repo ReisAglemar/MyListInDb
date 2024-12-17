@@ -39,48 +39,34 @@ public class App {
         String encerrar;
 
         //create and save Forncedor
-        Fornecedor fornecedor = new Fornecedor();
-        fornecedor.setNome("Federal");
-        repositoryFornecedor.save(fornecedor);
+        Fornecedor federal = new Fornecedor("Federal");
+        repositoryFornecedor.save(federal);
 
         // Create and save Categoria
-        Categoria categoria1 = new Categoria();
-        categoria1.setNome("Eletronicos");
-        repositoryCategoria.save(categoria1);
-
-        Categoria categoria2 = new Categoria();
-        categoria2.setNome("Esportes");
-        repositoryCategoria.save(categoria2);
-
-        Categoria categoria3 = new Categoria();
-        categoria3.setNome("Alimentacao");
-        repositoryCategoria.save(categoria3);
+        Categoria eletronicos = new Categoria("Eletrônicos");
+        repositoryCategoria.save(eletronicos);
+        Categoria esportes = new Categoria("Esportes");
+        repositoryCategoria.save(esportes);
+        Categoria alimentacao = new Categoria("Alimentação");
+        repositoryCategoria.save(alimentacao);
 
         //create and save Pedido
         Pedido pedido = new Pedido();
         repositoryPedido.save(pedido);
 
         //Create and save Produto
-        Produto produto1 = new Produto();
-        produto1.setNome("celular");
-        produto1.setPreco(1500.54);
-        produto1.setCategoria(categoria1);
-        produto1.setFornecedor(fornecedor);
-        repositoryProduto.save(produto1);
+        Produto celular = new Produto("Celular", 1500.94, eletronicos, federal, pedido);
+        repositoryProduto.save(celular);
 
-        Produto produto2 = new Produto();
-        produto2.setNome("bola futebol");
-        produto2.setPreco(250.90);
-        produto2.setCategoria(categoria2);
-        produto2.setFornecedor(fornecedor);
-        repositoryProduto.save(produto2);
+        Produto bolaFutebol = new Produto("Bola Futebol", 165.99, esportes, federal, pedido);
+        repositoryProduto.save(bolaFutebol);
 
-        Produto produto3 = new Produto();
-        produto3.setNome("picanha");
-        produto3.setPreco(199.99);
-        produto3.setCategoria(categoria3);
-        produto3.setFornecedor(fornecedor);
-        repositoryProduto.save(produto3);
+        Produto picanha = new Produto("Picanha", 200.99, alimentacao, federal, pedido);
+        repositoryProduto.save(picanha);
+
+
+
+
 
         //Created lists with data of DB
         categorias = repositoryCategoria.findAll();
@@ -95,8 +81,5 @@ public class App {
         System.out.println("Pressione 'Enter' Para Encerrar!");
 
        encerrar = in.nextLine();
-
-
-
     }
 }

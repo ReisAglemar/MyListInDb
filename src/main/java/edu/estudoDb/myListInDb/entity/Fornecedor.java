@@ -1,7 +1,10 @@
 package edu.estudoDb.myListInDb.entity;
 
 import edu.estudoDb.myListInDb.patterns.ItoString;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,30 +12,18 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class Produto implements ItoString {
+public class Fornecedor implements ItoString {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, name = "valor")
-    private double preco;
+    public Fornecedor() {}
 
-    @ManyToOne
-    private Categoria categoria;
-
-    @ManyToOne
-    private Fornecedor fornecedor;
-
-    public Produto() {
-    }
-
-    public Produto(String nome, double preco) {
+    public Fornecedor(String nome) {
         this.nome = nome;
-        this.preco = preco;
     }
 
     @Override
@@ -43,7 +34,7 @@ public class Produto implements ItoString {
                 Nome do Produto: %s
                 Valor do Produto: R$ %.2f
                 
-                """.formatted(this.id, this.nome, this.preco);
+                """.formatted(this.id, this.nome);
         return toString;
     }
 }

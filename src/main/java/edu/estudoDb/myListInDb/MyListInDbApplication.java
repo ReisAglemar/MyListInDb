@@ -2,6 +2,7 @@ package edu.estudoDb.myListInDb;
 
 import edu.estudoDb.myListInDb.principal.App;
 import edu.estudoDb.myListInDb.repository.RepositoryCategoria;
+import edu.estudoDb.myListInDb.repository.RepositoryFornecedor;
 import edu.estudoDb.myListInDb.repository.RepositoryPedido;
 import edu.estudoDb.myListInDb.repository.RepositoryProduto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,19 @@ import org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration;
 @SpringBootApplication
 public class MyListInDbApplication implements CommandLineRunner {
 
-    //injeção de dependência
+    //injeção de dependências
     @Autowired
     private RepositoryCategoria repositoryCategoria;
 
-    //injeção de dependência
+
     @Autowired
     private RepositoryPedido repositoryPedido;
 
     @Autowired
     private RepositoryProduto repositoryProduto;
+
+    @Autowired
+    private RepositoryFornecedor repositoryFornecedor;
 
 
     private final ProjectInfoAutoConfiguration projectInfoAutoConfiguration;
@@ -37,7 +41,7 @@ public class MyListInDbApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        App app = new App(repositoryCategoria, repositoryPedido, repositoryProduto);
+        App app = new App(repositoryCategoria, repositoryPedido, repositoryProduto, repositoryFornecedor);
         app.init();
     }
 }

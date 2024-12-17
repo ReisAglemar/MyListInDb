@@ -23,6 +23,7 @@ public class Pedido implements ItoString {
     private LocalDate data;
 
     public Pedido() {
+        this.data = LocalDate.now();
     }
 
     @Override

@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -18,6 +21,9 @@ public class Categoria implements ItoString {
 
     @Column(nullable = false)
     private String nome;
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {
     }
@@ -36,5 +42,10 @@ public class Categoria implements ItoString {
                 
                 """.formatted(this.id, this.nome);
         return toString;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        produtos.forEach(p-> p.setCategoria(this));
+        this.produtos = produtos;
     }
 }
